@@ -1,0 +1,19 @@
+.header-row {
+  background: var(--ion-color-primary);
+  color: var(--ion-color-primary-contrast);
+  font-weight: bold;
+  text-align: center;
+}
+
+.data-row {
+  border-bottom: 1px solid var(--ion-color-light-shade);
+  text-align: center;
+}
+
+.data-row:nth-child(even) {
+  background: var(--ion-color-light);
+}
+
+ion-col {
+  padding: 10px 8px;
+}

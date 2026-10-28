@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Ordenadores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="ion-padding">
+  @if (cargando()) {
+    <div class="centrado">
+      <ion-spinner name="crescent"></ion-spinner>
+    </div>
+  } @else if (error()) {
+    <ion-text color="danger">
+      <p>Error al cargar los datos: {{ error() }}</p>
+    </ion-text>
+  } @else if (ordenadores().length === 0) {
+    <ion-text color="medium">
+      <p>
+        La tabla <strong>Ordenadores</strong> existe pero está vacía. Añade
+        filas desde el panel de Supabase (Table Editor) para verlas aquí.
+      </p>
+    </ion-text>
+  } @else {
+    <div class="tabla-contenedor">
+      <table>
+        <thead>
+          <tr>
+            <th>Nombre</th>
+            <th>Marca</th>
+            <th>RAM</th>
+            <th>Procesador</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (ordenador of ordenadores(); track ordenador.id) {
+            <tr>
+              <td>{{ ordenador.nombre }}</td>
+              <td>{{ ordenador.marca }}</td>
+              <td>{{ ordenador.ram }}</td>
+              <td>{{ ordenador.procesador }}</td>
+            </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+  }
+</ion-content>

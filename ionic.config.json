@@ -1,0 +1,7 @@
+{
+  "name": "act1_juancarlos_rodrihuez",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

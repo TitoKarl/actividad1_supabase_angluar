@@ -1,0 +1,32 @@
+.centrado {
+  display: flex;
+  justify-content: center;
+  padding: 24px;
+}
+
+.tabla-contenedor {
+  width: 100%;
+  overflow-x: auto;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  background: var(--ion-card-background, white);
+}
+
+th,
+td {
+  padding: 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--ion-color-light-shade);
+}
+
+th {
+  background: var(--ion-color-primary);
+  color: white;
+}
+
+tbody tr:hover {
+  background: var(--ion-color-light);
+}

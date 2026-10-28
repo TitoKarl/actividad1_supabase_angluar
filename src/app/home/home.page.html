@@ -1,0 +1,63 @@
+
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title>Inventario de ordenadores</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" class="ion-padding">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Inventario de ordenadores</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Listado</ion-card-title>
+      <ion-card-subtitle>
+        Datos cargados desde Supabase
+      </ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content>
+
+      <!-- Mostrar error si existe -->
+      @if (error) {
+        <ion-text color="danger">
+          <p>{{ error }}</p>
+        </ion-text>
+      }
+
+      <!-- Mostrar listado de ordenadores -->
+      @if (ordenadores.length > 0 && !error) {
+        <div class="table-container">
+          <ion-grid>
+            <ion-row class="header-row">
+              <ion-col><strong>Nombre</strong></ion-col>
+              <ion-col><strong>Marca</strong></ion-col>
+              <ion-col><strong>Procesador</strong></ion-col>
+              <ion-col><strong>RAM (GB)</strong></ion-col>
+              <ion-col><strong>Estado</strong></ion-col>
+            </ion-row>
+
+            @for (ordenador of ordenadores; track ordenador.nombre) {
+              <ion-row class="data-row">
+                <ion-col>{{ ordenador.nombre }}</ion-col>
+                <ion-col>{{ ordenador.marca }}</ion-col>
+                <ion-col>{{ ordenador.procesador }}</ion-col>
+                <ion-col>{{ ordenador.ram }}</ion-col>
+                <ion-col>{{ ordenador.estado }}</ion-col>
+              </ion-row>
+            }
+          </ion-grid>
+        </div>
+      } @else if (ordenadores.length === 0 && !error) {
+        <ion-text color="medium">
+          <p>No hay ordenadores para mostrar.</p>
+        </ion-text>
+      }
+
+    </ion-card-content>
+  </ion-card>
+</ion-content>
